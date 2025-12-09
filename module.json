@@ -1,21 +1,21 @@
 {
-  "id": "module",
-  "title": "New Module",
-  "description": "",
+  "id": "put-a-ring-on-it",
+  "title": "Put A Ring On It",
+  "description": "Customize token rings and apply them automatically.",
   "version": "#{VERSION}#",
   "library": "false",
-  "manifestPlusVersion": "1.2.0",
   "compatibility": {
-    "minimum": 10,
-    "verified": 10,
-    "maximum": 11
+    "minimum": 13,
+    "verified": 13,
+    "maximum": 13
   },
   "authors": [
     {
-      "name": "The League of Extraordinary FVTT Developers",
-      "url": "https://github.com/League-of-Foundry-Developers",
-      "discord": "discordID#0001"
-    }
+      "name": "Autumn225",
+      "url": "https://github.com/Autumn225",
+      "discord": "autumn225",
+      "ko-fi": "https://ko-fi.com/autumn225"
+      }
   ],
   "relationships": {
     "systems": [],
@@ -24,9 +24,6 @@
   "esmodules": [
     "scripts/module.js"
   ],
-  "scripts": [
-    "scripts/lib/lib.js"
-  ],
   "styles": [
     "styles/module.css"
   ],
@@ -34,10 +31,12 @@
     {
       "lang": "en",
       "name": "English",
-      "path": "languages/en.json"
+      "path": "languages/en.json",
+      "flags": {}
     }
   ],
-  "url": "#{URL}#",
+  "changelog": "https://github.com/autumn225/put-a-ring-on-it/blob/master/CHANGELOG.md",
+  "url": "https://github.com/autumn225/put-a-ring-on-it/",
   "manifest": "#{MANIFEST}#",
   "download": "#{DOWNLOAD}#",
   "license": "LICENSE",
@@ -45,7 +44,7 @@
   "media": [
     {
       "type": "icon",
-      "url": "https://avatars2.githubusercontent.com/u/71292812?s=400&u=ccdb4eeb7abf551ca8f314e5a9bfd0479a4d3d41&v=4"
+      "url": ""
     }
   ]
 }

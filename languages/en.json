@@ -1,3 +1,54 @@
 {
-    "MODULE.hello": "hello"
+    "PUTARINGONIT": {
+        "Blacklist": {
+            "Menu": {
+                "Hint": "Prevent token rings auto applying to certain files paths (such as tokenizer or JB2A files).",
+                "Label": "Blacklist",
+                "Name": "Blacklist Menu"
+            }
+        },
+        "Defaults": {
+            "AllTokens": "All Tokens"
+        },
+        "Profiles": {
+            "Menu": {
+                "Hint": "Customize token ring \"Profiles\" which are presets that can quickly applied to tokens.",
+                "Label": "Profiles",
+                "Name": "Profiles Menu"
+            }
+        },
+        "Settings": {
+            "ApplyByDisposition": {
+                "Choices": {
+                    "HostileNeutral": "Hostile and Neutral"
+                },
+                "Hint": "Apply based on a token's disposition.",
+                "Name": "Apply by Disposition"
+            },
+            "ApplyByLinkedStatus": {
+                "Choices": {
+                    "Linked": "Unlinked Tokens",
+                    "Unlinked": "Linked Tokens"
+                },
+                "Hint": "Apply to tokens based on \"Link Actor Data\" status.",
+                "Name": "Apply by Linked Status"
+            },
+            "AutoApply": {
+                "Hint": "Automatically apply token ring to relevant tokens when dropped on the scene. When disabled, token rings must be enabled on the prototype token.",
+                "Name": "Auto Apply Token Ring"
+            },
+            "DefaultProfileFriendly": {
+                "Hint": "Token Ring Profile that will be applied to Friendly tokens without a customized ring.",
+                "Name": "Default Friendly Token Ring Profile"
+            },
+            "DefaultProfileHostile": {
+                "Hint": "Token Ring Profile that will be applied to Hostile tokens without a customized ring.",
+                "Name": "Default Hostile Token Ring Profile"
+            },
+            "DefaultProfileNeutral": {
+                "Hint": "Token Ring Profile that will be applied to Neutral tokens without a customized ring.",
+                "Name": "Default Neutral Token Ring Profile"
+            }
+        }
+    }
 }
