@@ -15,14 +15,14 @@ export class Constants {
                 texture: 'modules/put-a-ring-on-it/assets/textures/metal.png',
                 ringSize: Constants.RING_SIZES.medium,
                 ringBevel: Constants.RING_BEVELS.single,
-                colorOverlay: '#ff0000',
+                colorOverlay: '#ff0000'
             }),
             neutral: new TokenRingProfile({
                 name: 'TOKEN.DISPOSITION.NEUTRAL',
                 identifier: 'neutral',
                 texture: 'modules/put-a-ring-on-it/assets/textures/stone.png',
                 ringSize: Constants.RING_SIZES.medium,
-                ringBevel: Constants.RING_BEVELS.single,
+                ringBevel: Constants.RING_BEVELS.single
             }),
             friendly: new TokenRingProfile({
                 name: 'TOKEN.DISPOSITION.FRIENDLY',
@@ -30,21 +30,21 @@ export class Constants {
                 texture: 'modules/put-a-ring-on-it/assets/textures/marble.png',
                 ringSize: Constants.RING_SIZES.medium,
                 ringBevel: Constants.RING_BEVELS.frame,
-                colorOverlay: '#00ff00',
+                colorOverlay: '#00ff00'
             })
-        }
+        };
     }
     static get RING_SIZES() {
         return {
             small: SMALL_RING_SIZE,
             medium: MEDIUM_RING_SIZE,
-            large: LARGE_RING_SIZE,
+            large: LARGE_RING_SIZE
         };
     }
     static get RING_BEVELS() {
         return {
             single: SINGLE_BEVEL,
-            frame: FRAME_BEVEL,
+            frame: FRAME_BEVEL
         };
     }
 }
@@ -87,7 +87,7 @@ class SINGLE_BEVEL extends RING_BEVEL {
     static label = 'PUTARINGONIT.Defaults.SingleBevel';
 }
 class FRAME_BEVEL extends RING_BEVEL {
-    static identifier = 'frame'
+    static identifier = 'frame';
     static label = 'PUTARINGONIT.Defaults.FrameBevel';
 }
 /**
@@ -112,6 +112,7 @@ class Border {
             case 'large':
                 return 12; // change these
         }
+        return 8;
     }
 }
 class Shadow {

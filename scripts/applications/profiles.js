@@ -10,15 +10,15 @@ export class ProfilesMenu extends HandlebarsApplicationMixin(ApplicationV2) {
         form: {
             handler: ProfilesMenu.formHandler,
             submitOnChange: true,
-            closeOnSubmit: false,
+            closeOnSubmit: false
         },
         actions: {
-            confirm: ProfilesMenu.confirm,
+            confirm: ProfilesMenu.confirm
         },
         window: {
             title: 'Default Title',
             resizable: true,
-            contentClasses: ['standard-form'],
+            contentClasses: ['standard-form']
         },
         position: {
             width: 600,
@@ -27,14 +27,14 @@ export class ProfilesMenu extends HandlebarsApplicationMixin(ApplicationV2) {
     };
     static PARTS = {
         header: {
-            template: 'modules/put-a-ring-on-it/templates/header.hbs',
+            template: 'modules/put-a-ring-on-it/templates/header.hbs'
         },
         form: {
             template: 'modules/put-a-ring-on-it/templates/animation.hbs',
-            scrollable: [''],
+            scrollable: ['']
         },
         footer: {
-            template: 'modules/put-a-ring-on-it/templates/footer.hbs',
+            template: 'modules/put-a-ring-on-it/templates/footer.hbs'
         }
     };
     get title() {

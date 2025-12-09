@@ -1,0 +1,36 @@
+<div class="paroi-form">
+    {{#each form.fields}}
+        <div class="form-group">
+            <fieldset>
+                <legend>
+                    <label>{{localize this.label}}</label>
+                </legend>
+                {{#each this.inputs}}
+                    <div class="form-input">
+                        {{#if (eq this.type "folder")}}
+                            <div class="folder-display" data-name="{{this.name}}">
+                                <div class="tags input-element-tags">
+                                    {{#each this.value}}
+                                        <div class="tag" data-key="{{this}}">
+                                            <span>{{this}}</span>
+                                            <a class="remove fa-solid fa-xmark" data-action="removeFolder" data-path="{{this}}" data-tooltip="ELEMENTS.TAGS.Remove" aria-label="Remove Tag"></a>
+                                        </div>
+                                    {{/each}}
+                                </div>
+                            </div>
+                            <div class="folder-input" data-name="{{this.name}}">
+                                <input type="text" name="{{this.name}}" id="{{this.id}}" placeholder="{{this.hint}}">
+                                <button type="button" class="folder-input-button" data-name="{{this.name}}" data-action="addFolder">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                                <button type="button" class="folder-input-button" data-name="{{this.name}}" data-action="browseFolder">
+                                    <i class="fas fa-file-import"></i>
+                                </button>
+                            </div>
+                        {{/if}}
+                    </div>
+                {{/each}}
+            </fieldset>
+        </div>
+    {{/each}}
+</div>

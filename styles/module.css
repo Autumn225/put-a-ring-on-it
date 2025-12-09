@@ -1,0 +1,22 @@
+div.paroi-footer {
+    display: flex;
+    flex-direction: row;
+    gap: 0.625em;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+div.paroi-footer .footer-button {
+    width: 100%;
+}
+div.paroi-form .form-group .form-input .folder-display {
+    margin-bottom: 10px;
+}
+div.paroi-form .form-group .form-input .folder-input {
+    display: flex;
+    flex-direction: row;
+    gap: 0.625em;
+    flex-wrap: nowrap;
+}
+div.paroi-form .form-group .form-input .folder-input .folder-input-button {
+    min-width: var(--button-size);
+}

@@ -1,6 +1,22 @@
 {
     "PUTARINGONIT": {
         "Blacklist": {
+            "App": {
+                "Field": {
+                    "BlacklistFolders": {
+                        "Label": "Blacklisted Folders"
+                    }
+                },
+                "Header": {
+                    "Content": "Prevent token rings auto applying to certain files paths (such as tokenizer or JB2A files). Type the filepath to a folder in the text box and click the plus, or use the file browser to select a folder. Click the x on the tags to remove items from the blacklist.",
+                    "Title": "Blacklist"
+                },
+                "Warning": {
+                    "EmptyInput": "Please type a file path into the text box.",
+                    "InvalidFolder": "File path does not exist."
+                },
+                "WindowTitle": "Put A Ring On It - Blacklist Menu"
+            },
             "Menu": {
                 "Hint": "Prevent token rings auto applying to certain files paths (such as tokenizer or JB2A files).",
                 "Label": "Blacklist",
@@ -8,7 +24,14 @@
             }
         },
         "Defaults": {
-            "AllTokens": "All Tokens"
+            "AllTokens": "All Tokens",
+            "Cancel": "Cancel",
+            "FrameBevel": "Frame Bevel",
+            "Large": "Large",
+            "Medium": "Medium",
+            "Save": "Save",
+            "SingleBevel": "Single Bevel",
+            "Small": "Small"
         },
         "Profiles": {
             "Menu": {

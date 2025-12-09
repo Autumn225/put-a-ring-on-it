@@ -1,39 +1,40 @@
+import {Constants} from '../constants.js';
 let {ApplicationV2, HandlebarsApplicationMixin} = foundry.applications.api;
 export class TemplateApplication extends HandlebarsApplicationMixin(ApplicationV2) {
     constructor(data) {
-        super({id: 'template-application'});
-        this.windowTitle = helpers.localize('LOCALIZED.String');
+        super(data ?? {id: 'template-application'});
+        this.windowTitle = Constants.localize('LOCALIZED.String');
     }
     static DEFAULT_OPTIONS = {
         tag: 'form',
         form: {
             handler: TemplateApplication.formHandler,
             submitOnChange: true,
-            closeOnSubmit: false,
+            closeOnSubmit: false
         },
         actions: {
-            confirm: TemplateApplication.confirm,
+            confirm: TemplateApplication.confirm
         },
         window: {
             title: 'Default Title',
             resizable: true,
-            contentClasses: ['standard-form'],
+            contentClasses: ['standard-form']
         },
         position: {
-            width: 600,
-            height: 800
+            width: 'auto',
+            height: 'auto'
         }
     };
     static PARTS = {
         header: {
-            template: 'modules/put-a-ring-on-it/templates/header.hbs',
+            template: 'modules/put-a-ring-on-it/templates/header.hbs'
         },
         form: {
-            template: 'modules/put-a-ring-on-it/templates/animation.hbs',
-            scrollable: [''],
+            template: 'modules/put-a-ring-on-it/templates/form.hbs',
+            scrollable: ['']
         },
         footer: {
-            template: 'modules/put-a-ring-on-it/templates/footer.hbs',
+            template: 'modules/put-a-ring-on-it/templates/footer.hbs'
         }
     };
     get title() {

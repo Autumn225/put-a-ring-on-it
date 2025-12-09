@@ -31,7 +31,7 @@ function registerSettings() {
         type: BlacklistMenu,
         restricted: true
     });
-        game.settings.register(moduleName, 'autoApply', {
+    game.settings.register(moduleName, 'autoApply', {
         name: 'PUTARINGONIT.Settings.AutoApply.Name',
         hint: 'PUTARINGONIT.Settings.AutoApply.Hint',
         scope: 'world',
@@ -47,9 +47,9 @@ function registerSettings() {
         type: String,
         default: 'all',
         choices: {
-            'unlinked': 'PUTARINGONIT.Settings.ApplyByLinkedStatus.Choices.Unlinked',
-            'linked': 'PUTARINGONIT.Settings.ApplyByLinkedStatus.Choices.Linked',
-            'all': 'PUTARINGONIT.Defaults.AllTokens'
+            unlinked: 'PUTARINGONIT.Settings.ApplyByLinkedStatus.Choices.Unlinked',
+            linked: 'PUTARINGONIT.Settings.ApplyByLinkedStatus.Choices.Linked',
+            all: 'PUTARINGONIT.Defaults.AllTokens'
         }
     });
     game.settings.register(moduleName, 'applyByDisposition', {
@@ -60,11 +60,11 @@ function registerSettings() {
         type: String,
         default: 'all',
         choices: {
-            'hostile': 'TOKEN.DISPOSITION.HOSTILE',
-            'neutral': 'TOKEN.DISPOSITION.NEUTRAL',
-            'friendly': 'TOKEN.DISPOSITION.FRIENDLY',
-            'hostile_neutral': 'PUTARINGONIT.Settings.ApplyByDisposition.Choices.HostileNeutral',
-            'all': 'PUTARINGONIT.Defaults.AllTokens'
+            hostile: 'TOKEN.DISPOSITION.HOSTILE',
+            neutral: 'TOKEN.DISPOSITION.NEUTRAL',
+            friendly: 'TOKEN.DISPOSITION.FRIENDLY',
+            hostile_neutral: 'PUTARINGONIT.Settings.ApplyByDisposition.Choices.HostileNeutral',
+            all: 'PUTARINGONIT.Defaults.AllTokens'
         }
     });
     game.settings.register(moduleName, 'defaultProfileHostile', {
