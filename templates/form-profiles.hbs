@@ -1,0 +1,43 @@
+<div class="paroi-form scrollable">
+    {{#unless form.fields.length}}
+        <p class="hint paroi-centered">{{localize form.placeholder}}</p>
+    {{/unless}}
+    {{#each form.fields}}
+        {{#if enabled}}
+            <fieldset class="form-set" data-name="{{name}}" data-section="form">
+                <legend>
+                    <label>{{localize label}}</label>
+                </legend>
+                {{#each inputs}}
+                    <div class="form-group">
+                        {{#if (eq type "text")}}
+                            <label for="{{id}}">{{localize label}}</label>
+                            <input type="text" name="{{name}}" id="{{id}}" value="{{value}}">
+                        {{else if (eq type "color")}}
+                            <label for="{{id}}">{{localize label}}</label>
+                            <div class="form-fields">
+                                <color-picker name="{{name}}" id="{{id}}" value="{{value}}">
+                            </div>
+                        {{else if (eq type "checkbox")}}
+                            <label for="{{id}}">{{localize label}}</label>
+                            <input type="checkbox" name="{{name}}" id="{{id}}" {{#if value}}checked{{/if}}>
+                        {{else if (eq type "select")}}
+                            <label for="{{id}}">{{localize label}}</label>
+                            <select name="{{name}}" id="{{id}}">
+                                {{#each options}}
+                                    <option value="{{value}}" {{#if (eq ../value value)}}selected{{/if}}>{{localize label}}</option>
+                                {{/each}}
+                            </select>
+                        {{else if (eq type "image")}}
+                            <label for="{{id}}">{{localize label}}</label>
+                            <file-picker type="image" name="{{name}}" id="{{id}}" value="{{value}}"></file-picker>
+                        {{else}}
+                            {{log "Unknown input type: " type}}
+                        {{/if}}
+                        {{#if hint}}<p class="hint">{{localize hint}}</p>{{/if}}
+                    </div>
+                {{/each}}
+            </fieldset>
+        {{/if}}
+    {{/each}}
+</div>

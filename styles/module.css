@@ -1,3 +1,23 @@
+.paroi-centered {
+    text-align: center;
+}
+div.paroi-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: center;
+}
+div.paroi-header .form-set {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.625em;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+div.paroi-header .form-set .form-input {
+    width: 100%;
+}
 div.paroi-footer {
     display: flex;
     flex-direction: row;
@@ -5,7 +25,7 @@ div.paroi-footer {
     flex-wrap: nowrap;
     align-items: center;
 }
-div.paroi-footer .footer-button {
+div.paroi-footer .footer-button, div.paroi-header .header-button {
     width: 100%;
 }
 div.paroi-form .form-group .form-input .folder-display {
@@ -16,7 +36,14 @@ div.paroi-form .form-group .form-input .folder-input {
     flex-direction: row;
     gap: 0.625em;
     flex-wrap: nowrap;
+    width: 100%;
 }
 div.paroi-form .form-group .form-input .folder-input .folder-input-button {
     min-width: var(--button-size);
+}
+div.paroi-form .form-group .form-field {
+    display: flex;
+}
+div.paroi-form .form-set {
+    margin-bottom: 0.625em;
 }

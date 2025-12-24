@@ -27,13 +27,139 @@
             "AllTokens": "All Tokens",
             "Cancel": "Cancel",
             "FrameBevel": "Frame Bevel",
+            "Full": "Full",
             "Large": "Large",
             "Medium": "Medium",
+            "None": "None",
+            "Partial": "Partial",
             "Save": "Save",
             "SingleBevel": "Single Bevel",
             "Small": "Small"
         },
         "Profiles": {
+            "App": {
+                "Buttons": {
+                    "AddProfile": "Add New Profile",
+                    "RemoveProfile": "Remove Selected Profile"
+                },
+                "ConfirmDelete": {
+                    "Content": "Are you sure you want to delete the selected profile?"
+                },
+                "Field": {
+                    "Borders": {
+                        "InnerBorder": {
+                            "Color": {
+                                "Label": "Inner Border Color:"
+                            },
+                            "Enabled": {
+                                "Label": "Inner Border Enabled:"
+                            },
+                            "Size": {
+                                "Label": "Inner Border Size:"
+                            }
+                        },
+                        "Label": "Borders",
+                        "OuterBorder": {
+                            "Color": {
+                                "Label": "Outer Border Color:"
+                            },
+                            "Enabled": {
+                                "Label": "Outer Border Enabled:"
+                            },
+                            "Size": {
+                                "Label": "Outer Border Size:"
+                            }
+                        }
+                    },
+                    "Glows": {
+                        "InnerGlow": {
+                            "Color": {
+                                "Label": "Inner Glow Color:"
+                            },
+                            "Enabled": {
+                                "Label": "Inner Glow Enabled:"
+                            }
+                        },
+                        "Label": "Glows",
+                        "OuterGlow": {
+                            "Color": {
+                                "Label": "Outer Glow Color:"
+                            },
+                            "Enabled": {
+                                "Label": "Outer Glow Enabled:"
+                            }
+                        }
+                    },
+                    "Info": {
+                        "Label": "Info",
+                        "OverrideEnabled": {
+                            "Hint": "When enabled, a chosen texture will be applied to tokens instead of a custon ring.",
+                            "Label": "Override Enabled:"
+                        },
+                        "ProfileIdentifier": {
+                            "Label": "Profile Identifier:"
+                        },
+                        "ProfileName": {
+                            "Label": "Profile Name:"
+                        }
+                    },
+                    "Override": {
+                        "Label": "Override",
+                        "OverrideTexture": {
+                            "Hint": "File path to your own token ring texture.",
+                            "Label": "Override Texture:"
+                        }
+                    },
+                    "Ring": {
+                        "BevelStyle": {
+                            "Hint": "Bevel style, for added depth.",
+                            "Label": "Bevel Style:"
+                        },
+                        "ColorOverlay": {
+                            "Label": "Overlay Color:"
+                        },
+                        "ColorOverlayEnabled": {
+                            "Hint": "When enabled, a tint of the chose color will be added to the token ring.",
+                            "Label": "Color Overlay Enabled:"
+                        },
+                        "Label": "Ring",
+                        "Size": {
+                            "Hint": "Width of the token ring.",
+                            "Label": "Ring Size:"
+                        },
+                        "Texture": {
+                            "Hint": "Texture for token ring, you can use your own or the module's defaults.",
+                            "Label": "Ring Texture:"
+                        }
+                    },
+                    "Shadows": {
+                        "InnerShadow": {
+                            "Coverage": {
+                                "Label": "Inner Shadow Coverage:"
+                            },
+                            "Enabled": {
+                                "Label": "Inner Shadow Enabled:"
+                            }
+                        },
+                        "Label": "Shadows",
+                        "OuterShadow": {
+                            "Coverage": {
+                                "Label": "Outer Shadow Coverage:"
+                            },
+                            "Enabled": {
+                                "Label": "Outer Shadow Enabled:"
+                            }
+                        }
+                    }
+                },
+                "Form": {
+                    "Placeholder": "Select or add a profile!"
+                },
+                "Header": {
+                    "Content": "Select profile to edit."
+                },
+                "WindowTitle": "Put A Ring On It - Profiles Menu"
+            },
             "Menu": {
                 "Hint": "Customize token ring \"Profiles\" which are presets that can quickly applied to tokens.",
                 "Label": "Profiles",

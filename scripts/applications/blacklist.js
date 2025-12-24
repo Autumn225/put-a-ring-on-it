@@ -29,6 +29,18 @@ export class BlacklistMenu extends TemplateApplication {
             height: 'auto'
         }
     };
+    static PARTS = {
+        header: {
+            template: 'modules/put-a-ring-on-it/templates/header.hbs'
+        },
+        form: {
+            template: 'modules/put-a-ring-on-it/templates/form-blacklist.hbs',
+            scrollable: ['']
+        },
+        footer: {
+            template: 'modules/put-a-ring-on-it/templates/footer.hbs'
+        }
+    };
     /** Buttons **/
     static async addFolder(event, target) {
         let inputName = target.dataset?.name;
@@ -61,46 +73,35 @@ export class BlacklistMenu extends TemplateApplication {
         browser.render(true);
     }
     static async confirm(event, target) {
-        console.log('Saving blacklist:', this.blacklist);
         await game.settings.set(Constants.MODULE_NAME, 'blacklist', this.blacklist);
         this.close();
     }
-    /* Overwrites */
+    /** Overwrites **/
     _prepareContext(options) {
         let context = {
             header: {
-                content: 'PUTARINGONIT.Blacklist.App.Header.Content' //make it a muted color
+                content: 'PUTARINGONIT.Blacklist.App.Header.Content'
             },
-            footer: {
-                buttons: [
+            form: {
+                fields: [
                     {
-                        type: 'submit',
-                        action: 'confirm',
-                        label: 'PUTARINGONIT.Defaults.Save'
-                    },
-                    {
-                        type: 'submit',
-                        action: 'close',
-                        label: 'PUTARINGONIT.Defaults.Cancel'
+                        label: 'PUTARINGONIT.Blacklist.App.Field.BlacklistFolders.Label',
+                        inputs: [
+                            {
+                                type: 'folder',
+                                name: 'blacklistFolders',
+                                id: 'blacklist-folders',
+                                hint: 'modules/put-a-ring-on-it',
+                                value: this.blacklist
+                            }
+                        ],
+                        enabled: true
                     }
                 ]
+            },
+            footer: {
+                buttons: this.footerButtons
             }
-        };
-        context.form = {
-            fields: [
-                {
-                    label: 'PUTARINGONIT.Blacklist.App.Field.BlacklistFolders.Label',
-                    inputs: [
-                        {
-                            type: 'folder',
-                            name: 'blacklistFolders',
-                            id: 'blacklist-folders',
-                            hint: 'modules/put-a-ring-on-it',
-                            value: this.blacklist
-                        }
-                    ]
-                }
-            ]
         };
         return context;
     }

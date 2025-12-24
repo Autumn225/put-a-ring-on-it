@@ -40,6 +40,20 @@ export class TemplateApplication extends HandlebarsApplicationMixin(ApplicationV
     get title() {
         return this.windowTitle;
     }
+    get footerButtons() {
+        return ([
+            {
+                type: 'submit',
+                action: 'confirm',
+                label: 'PUTARINGONIT.Defaults.Save'
+            },
+            {
+                type: 'submit',
+                action: 'close',
+                label: 'PUTARINGONIT.Defaults.Cancel'
+            }
+        ]);
+    }
     static formHandler(event) {
         //
     }

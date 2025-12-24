@@ -1,4 +1,23 @@
-<div class="paroi-header {{#if header.class}}{{header.class}}{{/if}}" id="{{header.id}}">
+<div class="paroi-header {{#if header.class}}{{header.class}}{{/if}}">
     {{#if header.title}}<h1>{{localize header.title}}</h1>{{/if}}
     {{#if header.content}}<p class="hint">{{localize header.content}}</p>{{/if}}
+    {{#each header.fields}}
+        <div class="form-set" data-name="{{name}}" data-section="header">
+            {{#each inputs}}
+                <div class="form-input" data-name="{{name}}">
+                    {{#if (eq type "select")}}
+                        <select name="{{name}}" id="{{id}}">
+                            {{#each options}}
+                                <option value="{{value}}" {{#if (eq ../value value)}}selected{{/if}}>{{localize label}}</option>
+                            {{/each}}
+                        </select>
+                    {{else if (eq type "button")}}
+                        <button type="button" class="header-button" data-action="{{action}}" name="{{name}}" {{#if disabled}}disabled{{/if}}>
+                            <label>{{localize label}}</label>
+                        </button>
+                    {{/if}}
+                </div>
+            {{/each}}
+        </div>
+    {{/each}}
 </div>

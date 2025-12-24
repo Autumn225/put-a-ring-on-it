@@ -4,5 +4,4 @@ Hooks.once('init', async function() {
     settings.registerSettings();
 });
 Hooks.once('ready', async function() {
-
 });

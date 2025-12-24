@@ -1,16 +1,19 @@
-<div class="paroi-form">
+<div class="paroi-form scrollable">
+    {{#unless form.fields.length}}
+        <p class="hint paroi-centered">{{localize form.placeholder}}</p>
+    {{/unless}}
     {{#each form.fields}}
-        <div class="form-group">
-            <fieldset>
+        <div class="form-group" data-name="{{name}}" data-section="form">
+            <fieldset class="form-field">
                 <legend>
-                    <label>{{localize this.label}}</label>
+                    <label>{{localize label}}</label>
                 </legend>
-                {{#each this.inputs}}
+                {{#each inputs}}
                     <div class="form-input">
-                        {{#if (eq this.type "folder")}}
-                            <div class="folder-display" data-name="{{this.name}}">
+                        {{#if (eq type "folder")}}
+                            <div class="folder-display" data-name="{{name}}">
                                 <div class="tags input-element-tags">
-                                    {{#each this.value}}
+                                    {{#each value}}
                                         <div class="tag" data-key="{{this}}">
                                             <span>{{this}}</span>
                                             <a class="remove fa-solid fa-xmark" data-action="removeFolder" data-path="{{this}}" data-tooltip="ELEMENTS.TAGS.Remove" aria-label="Remove Tag"></a>
@@ -18,12 +21,12 @@
                                     {{/each}}
                                 </div>
                             </div>
-                            <div class="folder-input" data-name="{{this.name}}">
-                                <input type="text" name="{{this.name}}" id="{{this.id}}" placeholder="{{this.hint}}">
-                                <button type="button" class="folder-input-button" data-name="{{this.name}}" data-action="addFolder">
+                            <div class="folder-input" data-name="{{name}}">
+                                <input type="text" name="{{name}}" id="{{id}}" placeholder="{{hint}}">
+                                <button type="button" class="folder-input-button" data-name="{{name}}" data-action="addFolder">
                                     <i class="fas fa-plus"></i>
                                 </button>
-                                <button type="button" class="folder-input-button" data-name="{{this.name}}" data-action="browseFolder">
+                                <button type="button" class="folder-input-button" data-name="{{name}}" data-action="browseFolder">
                                     <i class="fas fa-file-import"></i>
                                 </button>
                             </div>
