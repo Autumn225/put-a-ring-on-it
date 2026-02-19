@@ -28,13 +28,10 @@
             "Cancel": "Cancel",
             "FrameBevel": "Frame Bevel",
             "Full": "Full",
-            "Large": "Large",
-            "Medium": "Medium",
             "None": "None",
             "Partial": "Partial",
             "Save": "Save",
-            "SingleBevel": "Single Bevel",
-            "Small": "Small"
+            "SingleBevel": "Single Bevel"
         },
         "Module": {
             "LibWrapperRequired": "Put A Ring On It requires Libwrapper, please enabled it and reload!"
