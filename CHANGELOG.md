@@ -1,3 +1,6 @@
+# 0.0.3 Release:
+- Localize profile name in profiles menu
+  
 # 0.0.2 Release:
 - Fix workflow to include all files
 
