@@ -1,5 +1,6 @@
 import {TemplateApplication} from './defaultMenu.js';
 import {Constants, TokenRingProfile} from '../constants.js';
+import {PutARingOnIt} from '../put-a-ring-on-it.js';
 export class ProfilesMenu extends TemplateApplication {
     constructor() {
         super({id: 'put-a-ring-on-it-profiles-menu'});
@@ -61,6 +62,7 @@ export class ProfilesMenu extends TemplateApplication {
     static async confirm(event, target) {
         await game.settings.set(Constants.MODULE_NAME, 'profiles', this.profiles);
         this.close(true);
+        await PutARingOnIt.cacheTextures();
     }
     static addProfile(event, target) {
         let profileCount = Object.keys(this.profiles).length + 1;

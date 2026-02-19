@@ -1,0 +1,14 @@
+<fieldset class="paroi-token-config active">
+    <legend>Put A Ring On It</legend>
+    <div class="form-group">
+        <label>{{localize 'PUTARINGONIT.TokenConfig.Label'}}</label>
+        <div class="form-fields">
+            <select name="flags.put-a-ring-on-it.selected-profile">
+                {{#each options}}
+                    <option value="{{value}}" {{#if (eq ../value value)}}selected{{/if}}>{{localize label}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <p class="hint">{{localize 'PUTARINGONIT.TokenConfig.Hint'}}</p>
+    </div>
+</fieldset>

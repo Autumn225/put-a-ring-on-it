@@ -36,6 +36,9 @@
             "SingleBevel": "Single Bevel",
             "Small": "Small"
         },
+        "Module": {
+            "LibWrapperRequired": "Put A Ring On It requires Libwrapper, please enabled it and reload!"
+        },
         "Profiles": {
             "App": {
                 "Buttons": {
@@ -198,6 +201,10 @@
                 "Hint": "Token Ring Profile that will be applied to Neutral tokens without a customized ring.",
                 "Name": "Default Neutral Token Ring Profile"
             }
+        },
+        "TokenConfig": {
+            "Hint": "The selected profile will be applied, ignoring default settings. Profiles can be added or changed in the settings.",
+            "Label": "Token Ring Profile:"
         }
     }
 }

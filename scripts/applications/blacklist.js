@@ -1,5 +1,6 @@
 import {Constants} from '../constants.js';
 import {TemplateApplication} from './defaultMenu.js';
+import {PutARingOnIt} from '../put-a-ring-on-it.js';
 let FilePicker = foundry.applications.apps.FilePicker.implementation;
 export class BlacklistMenu extends TemplateApplication {
     constructor() {
@@ -75,6 +76,7 @@ export class BlacklistMenu extends TemplateApplication {
     static async confirm(event, target) {
         await game.settings.set(Constants.MODULE_NAME, 'blacklist', this.blacklist);
         this.close();
+        PutARingOnIt.syncSettings();
     }
     /** Overwrites **/
     _prepareContext(options) {

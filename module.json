@@ -19,7 +19,15 @@
   ],
   "relationships": {
     "systems": [],
-    "requires": []
+    "requires": [
+      {
+        "id": "lib-wrapper",
+        "type": "module",
+        "compatibility": {
+          "minimum": "1.1.2"
+        }
+      }
+    ]
   },
   "esmodules": [
     "scripts/module.js"

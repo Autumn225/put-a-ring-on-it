@@ -36,6 +36,34 @@ export class Constants {
             })
         };
     }
+    static get assetPaths() {
+        return ({
+            bevel_frame_large: 'modules/put-a-ring-on-it/assets/bevels/bevel_frame_large.png',
+            bevel_frame_medium: 'modules/put-a-ring-on-it/assets/bevels/bevel_frame_medium.png',
+            bevel_frame_small: 'modules/put-a-ring-on-it/assets/bevels/bevel_frame_small.png',
+            bevel_single_large: 'modules/put-a-ring-on-it/assets/bevels/bevel_single_large.png',
+            bevel_single_medium: 'modules/put-a-ring-on-it/assets/bevels/bevel_single_medium.png',
+            bevel_single_small: 'modules/put-a-ring-on-it/assets/bevels/bevel_single_small.png',
+            glow_full_inner_large: 'modules/put-a-ring-on-it/assets/glows/glow_full_inner_large.png',
+            glow_full_inner_medium: 'modules/put-a-ring-on-it/assets/glows/glow_full_inner_medium.png',
+            glow_full_inner_small: 'modules/put-a-ring-on-it/assets/glows/glow_full_inner_small.png',
+            glow_full_outer_large: 'modules/put-a-ring-on-it/assets/glows/glow_full_outer_large.png',
+            glow_full_outer_medium: 'modules/put-a-ring-on-it/assets/glows/glow_full_outer_medium.png',
+            glow_full_outer_small: 'modules/put-a-ring-on-it/assets/glows/glow_full_outer_small.png',
+            shadow_full_inner_large: 'modules/put-a-ring-on-it/assets/shadows/shadow_full_inner_large.png',
+            shadow_full_inner_medium: 'modules/put-a-ring-on-it/assets/shadows/shadow_full_inner_medium.png',
+            shadow_full_inner_small: 'modules/put-a-ring-on-it/assets/shadows/shadow_full_inner_small.png',
+            shadow_full_outer_large: 'modules/put-a-ring-on-it/assets/shadows/shadow_full_outer_large.png',
+            shadow_full_outer_medium: 'modules/put-a-ring-on-it/assets/shadows/shadow_full_outer_medium.png',
+            shadow_full_outer_small: 'modules/put-a-ring-on-it/assets/shadows/shadow_full_outer_small.png',
+            shadow_partial_inner_large: 'modules/put-a-ring-on-it/assets/shadows/shadow_partial_inner_large.png',
+            shadow_partial_inner_medium: 'modules/put-a-ring-on-it/assets/shadows/shadow_partial_inner_medium.png',
+            shadow_partial_inner_small: 'modules/put-a-ring-on-it/assets/shadows/shadow_partial_inner_small.png',
+            shadow_partial_outer_large: 'modules/put-a-ring-on-it/assets/shadows/shadow_partial_outer_large.png',
+            shadow_partial_outer_medium: 'modules/put-a-ring-on-it/assets/shadows/shadow_partial_outer_medium.png',
+            shadow_partial_outer_small: 'modules/put-a-ring-on-it/assets/shadows/shadow_partial_outer_small.png'
+        });
+    }
 }
 export class TokenRingProfile {
     constructor(data = {}) {
@@ -394,9 +422,11 @@ class Ring {
         this.colorOverlayEnabled = data?.colorOverlayEnabled ?? false;
         this.colorOverlayColor = data?.colorOverlayColor ?? null;
     }
+    get bevelFileKey() {
+        return this.bevelStyle != 'none' ? `bevel_${this.bevelStyle}_${this.size}` : null;
+    }
     get bevelFilePath() {
-        if (this.bevelStyle != 'none') return `modules/put-a-ring-on-it/assets/bevels/bevel_${this.bevelStyle}_${this.size}.png`;
-        else return null;
+        return this.bevelStyle != 'none' ? `modules/put-a-ring-on-it/assets/bevels/bevel_${this.bevelStyle}_${this.size}.png` : null;
     }
 }
 class Border {
@@ -405,16 +435,16 @@ class Border {
         this.size = data?.size ?? 'medium';
         this.color = data?.color ?? '#000000';
     }
-    get width() {
+    get lineRatio() {
         switch (this.size) {
             case 'small':
-                return 4;
+                return 0.01;
             case 'medium':
-                return 8;
+                return 0.015;
             case 'large':
-                return 12; // change these
+                return 0.02;
         }
-        return 8;
+        return 0.015;
     }
 }
 class glowShadow {
@@ -429,6 +459,9 @@ class Shadow extends glowShadow {
     constructor(data = {}) {
         super(data);
     }
+    get fileKey() {
+        return `shadow_${this.coverage}_${this.location}_${this.size}`;
+    }
     get filePath() {
         return `modules/put-a-ring-on-it/assets/shadows/shadow_${this.coverage}_${this.location}_${this.size}.png`;
     }
@@ -438,6 +471,9 @@ class Glow extends glowShadow {
         data.coverage = 'full';
         super(data);
         this.color = data?.color ?? '#ffffff';
+    }
+    get fileKey() {
+        return `glow_${this.coverage}_${this.location}_${this.size}`;
     }
     get filePath() {
         return `modules/put-a-ring-on-it/assets/glows/glow_${this.coverage}_${this.location}_${this.size}.png`;
