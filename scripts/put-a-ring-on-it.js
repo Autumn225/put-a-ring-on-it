@@ -47,7 +47,6 @@ function applyRing(token) {
     let dispo = token.document.disposition;
     // If there's a selected profile, always apply it
     let selectedProfileKey = token.document.getFlag(Constants.MODULE_NAME, 'selected-profile');
-    console.log(settings.autoApply);
     if (selectedProfileKey) profile = profiles[selectedProfileKey];
     // Otherwise, apply based on settings
     else if (settings.autoApply) {
@@ -71,7 +70,7 @@ function applyRing(token) {
         let src = token.document.texture.src;
         if (settings.blacklist.some(i => src.includes(i))) return;
         // If there's no selected profile, we default to disposition
-        profile = profiles[Object.keys(CONST.TOKEN_DISPOSITIONS)?.find(key => CONST.TOKEN_DISPOSITIONS[key] === dispo)?.toLowerCase()] ?? null;
+        profile = profiles[settings['defaultProfile' + Object.keys(CONST.TOKEN_DISPOSITIONS)?.find(key => CONST.TOKEN_DISPOSITIONS[key] === dispo)?.toLowerCase().replace(/^./, char => char.toUpperCase())] ?? null];
     }
     if (!profile) return;
 

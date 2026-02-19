@@ -1,3 +1,6 @@
+# 0.0.5 Release:
+- Actually take from default profile settings
+  
 # 0.0.4 Release:
 - Force default texture in new profiles
   
