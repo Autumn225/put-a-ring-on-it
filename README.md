@@ -19,3 +19,8 @@ Select a token ring profile to be applied regardless of the settings. This can o
 ![image5](docs/images/image5.png)
 
 Settings allow you to customize and create profiles, set the blacklist to prevent default token rings from applying, and control the automatic application of token rings by linked status and disposition.
+
+## Support me
+
+If you enjoy the module and are in the position to, please consider supporting me on Ko-fi.
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/U7U0EZHM7)
