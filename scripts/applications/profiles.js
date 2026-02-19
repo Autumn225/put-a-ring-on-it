@@ -69,7 +69,7 @@ export class ProfilesMenu extends TemplateApplication {
         while (this.profiles['new-profile-' + profileCount]) {
             profileCount++;
         }
-        this.profiles['new-profile-' + profileCount] = new TokenRingProfile({name: 'New Profile ' + profileCount, identifier: 'new-profile-' + profileCount});
+        this.profiles['new-profile-' + profileCount] = new TokenRingProfile({name: 'New Profile ' + profileCount, identifier: 'new-profile-' + profileCount, texture: 'modules/put-a-ring-on-it/assets/textures/metal.png'});
         this.selectedProfile = 'new-profile-' + profileCount;
         this.render(true);
     }

@@ -1,3 +1,6 @@
+# 0.0.4 Release:
+- Force default texture in new profiles
+  
 # 0.0.3 Release:
 - Localize profile name in profiles menu
   
