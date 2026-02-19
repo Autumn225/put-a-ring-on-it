@@ -47,6 +47,7 @@ function applyRing(token) {
     let dispo = token.document.disposition;
     // If there's a selected profile, always apply it
     let selectedProfileKey = token.document.getFlag(Constants.MODULE_NAME, 'selected-profile');
+    console.log(settings.autoApply);
     if (selectedProfileKey) profile = profiles[selectedProfileKey];
     // Otherwise, apply based on settings
     else if (settings.autoApply) {
@@ -66,11 +67,12 @@ function applyRing(token) {
                     break;
             }
         }
+        // Check blacklist
         let src = token.document.texture.src;
         if (settings.blacklist.some(i => src.includes(i))) return;
+        // If there's no selected profile, we default to disposition
+        profile = profiles[Object.keys(CONST.TOKEN_DISPOSITIONS)?.find(key => CONST.TOKEN_DISPOSITIONS[key] === dispo)?.toLowerCase()] ?? null;
     }
-    // If there's no selected profile, we default to disposition
-    if (!profile) profile = profiles[Object.keys(CONST.TOKEN_DISPOSITIONS)?.find(key => CONST.TOKEN_DISPOSITIONS[key] === dispo)?.toLowerCase()] ?? null;
     if (!profile) return;
 
     // Make profile live
@@ -97,7 +99,7 @@ function applyRing(token) {
     const standardPx = 1024;
     const outerPx = 1075;
     const outerScale = outerPx / standardPx;
-    
+
     // Math
     const w = token.w * token.document.texture.scaleX;
     const h = token.h * token.document.texture.scaleY;
@@ -151,7 +153,7 @@ function applyRing(token) {
         os.height = h * outerScale;
         backContainer.addChild(os);
     }
-    // Insert back container at the back
+    // Insert container at the back
     token.addChildAt(backContainer, 0);
 
     // Front container (frames, bevels, inner shadows and glows)
