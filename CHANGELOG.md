@@ -1,3 +1,6 @@
+# 0.0.6 Release:
+- Fix up custom settings
+
 # 0.0.5 Release:
 - Actually take from default profile settings
   

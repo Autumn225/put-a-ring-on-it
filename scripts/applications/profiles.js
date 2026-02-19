@@ -1,6 +1,7 @@
 import {TemplateApplication} from './defaultMenu.js';
 import {Constants, TokenRingProfile} from '../constants.js';
 import {PutARingOnIt} from '../put-a-ring-on-it.js';
+import {settings} from '../settings.js';
 export class ProfilesMenu extends TemplateApplication {
     constructor() {
         super({id: 'put-a-ring-on-it-profiles-menu'});
@@ -52,6 +53,11 @@ export class ProfilesMenu extends TemplateApplication {
             this[inputName] = value;
         } else if (fieldSection === 'form') {
             this.profiles[this.selectedProfile][inputName] = value;
+            if (inputName === 'identifier') {
+                this.profiles[value] = this.profiles[this.selectedProfile];
+                delete this.profiles[this.selectedProfile];
+                this.selectedProfile = value;
+            }
         }
         this.render(true);
     }
@@ -62,6 +68,8 @@ export class ProfilesMenu extends TemplateApplication {
     static async confirm(event, target) {
         await game.settings.set(Constants.MODULE_NAME, 'profiles', this.profiles);
         this.close(true);
+        settings.registerSettings();
+        Array.from(foundry.applications.instances.values()).find(w => w.id === 'settings-config')?.render(true);
         await PutARingOnIt.cacheTextures();
     }
     static addProfile(event, target) {
