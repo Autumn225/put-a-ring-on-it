@@ -7,7 +7,7 @@
 - Create different profiles for friendly, neutral, and hostile tokens, or create custom profiles and apply them to individual tokens
 - Easy to disable, token rings are applied via PIXI and no files are created or edited
 - Ready-to-go with default profiles, no setup required
-- Compatible with Tokenizer, D&D5E system tokens, and JB2A tokens, will not apply token rings to them by default.
+- Compatible with Tokenizer, D&D5E system tokens, and JB2A tokens, will not apply token rings to them by default
 - Requires libWrapper only, system agnostic
 
   &nbsp;
