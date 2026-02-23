@@ -155,6 +155,9 @@
                 "Form": {
                     "Placeholder": "Select or add a profile!"
                 },
+                "Preview": {
+                    "Label": "Preview"
+                },
                 "Header": {
                     "Content": "Select profile to edit."
                 },

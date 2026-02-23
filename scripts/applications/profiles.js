@@ -1,6 +1,7 @@
 import {TemplateApplication} from './defaultMenu.js';
 import {Constants, TokenRingProfile} from '../constants.js';
 import {PutARingOnIt} from '../put-a-ring-on-it.js';
+import {PreviewRenderer} from './preview-renderer.js';
 import {settings} from '../settings.js';
 export class ProfilesMenu extends TemplateApplication {
     constructor() {
@@ -27,7 +28,7 @@ export class ProfilesMenu extends TemplateApplication {
             contentClasses: ['standard-form']
         },
         position: {
-            width: 500,
+            width: 800,
             height: 'auto'
         }
     };
@@ -38,6 +39,9 @@ export class ProfilesMenu extends TemplateApplication {
         form: {
             template: 'modules/put-a-ring-on-it/templates/form-profiles.hbs',
             scrollable: ['']
+        },
+        preview: {
+            template: 'modules/put-a-ring-on-it/templates/preview-profiles.hbs'
         },
         footer: {
             template: 'modules/put-a-ring-on-it/templates/footer.hbs'
@@ -93,6 +97,13 @@ export class ProfilesMenu extends TemplateApplication {
         this.render(true);
     }
     /* Overwrites */
+    _configureRenderOptions(options) {
+        super._configureRenderOptions(options);
+        // On re-renders (submitOnChange), only update header + form + footer — preserve the PIXI canvas
+        if (this._previewRenderer) {
+            options.parts = ['header', 'form', 'footer'];
+        }
+    }
     _prepareContext(options) {
         let profileData = this.profiles[this.selectedProfile] ? new TokenRingProfile(this.profiles[this.selectedProfile]) : null;
         let context = {
@@ -143,11 +154,24 @@ export class ProfilesMenu extends TemplateApplication {
         };
         return context;
     }
-    _onRender(context, options) {
-        //this.element.querySelectorAll...
+    async _onRender(context, options) {
+        // Initialize preview renderer on first render
+        if (!this._previewRenderer) {
+            let canvas = this.element.querySelector('#paroi-preview-canvas');
+            if (canvas) {
+                this._previewRenderer = new PreviewRenderer(canvas);
+                await this._previewRenderer.loadTextures();
+            }
+        }
+        // Update preview with current profile data
+        let profileData = this.profiles[this.selectedProfile] ?? null;
+        this._previewRenderer?.render(profileData, this.selectedProfile);
     }
     async close(options) {
-        // Do things when closed...
+        if (this._previewRenderer) {
+            this._previewRenderer.destroy();
+            this._previewRenderer = null;
+        }
         super.close(options);
         return true;
     }
