@@ -6,8 +6,8 @@ export class PreviewRenderer {
         this.canvas = canvas;
         this.app = new PIXI.Application({
             view: canvas,
-            width: 256,
-            height: 256,
+            width: 200,
+            height: 200,
             backgroundAlpha: 0,
             antialias: true
         });
@@ -85,7 +85,7 @@ export class PreviewRenderer {
             this._lastProfileKey = profileKey;
             await this._randomizePortrait(profileKey);
         }
-        let size = 256;
+        let size = 200;
         let cx = size / 2;
         let cy = size / 2;
 

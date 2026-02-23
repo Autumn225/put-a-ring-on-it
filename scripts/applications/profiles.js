@@ -40,9 +40,6 @@ export class ProfilesMenu extends TemplateApplication {
             template: 'modules/put-a-ring-on-it/templates/form-profiles.hbs',
             scrollable: ['']
         },
-        preview: {
-            template: 'modules/put-a-ring-on-it/templates/preview-profiles.hbs'
-        },
         footer: {
             template: 'modules/put-a-ring-on-it/templates/footer.hbs'
         }
@@ -97,13 +94,6 @@ export class ProfilesMenu extends TemplateApplication {
         this.render(true);
     }
     /* Overwrites */
-    _configureRenderOptions(options) {
-        super._configureRenderOptions(options);
-        // On re-renders (submitOnChange), only update header + form + footer — preserve the PIXI canvas
-        if (this._previewRenderer) {
-            options.parts = ['header', 'form', 'footer'];
-        }
-    }
     _prepareContext(options) {
         let profileData = this.profiles[this.selectedProfile] ? new TokenRingProfile(this.profiles[this.selectedProfile]) : null;
         let context = {
@@ -155,17 +145,24 @@ export class ProfilesMenu extends TemplateApplication {
         return context;
     }
     async _onRender(context, options) {
-        // Initialize preview renderer on first render
-        if (!this._previewRenderer) {
-            let canvas = this.element.querySelector('#paroi-preview-canvas');
+        let fieldset = this.element.querySelector('[data-name="preview"]');
+        if (!fieldset) {
+            this._previewRenderer?.destroy();
+            this._previewRenderer = null;
+            return;
+        }
+        if (this._previewRenderer) {
+            // Replace the template's fresh canvas with the existing PIXI-bound one
+            fieldset.querySelector('canvas')?.replaceWith(this._previewRenderer.canvas);
+        } else {
+            let canvas = fieldset.querySelector('#paroi-preview-canvas');
             if (canvas) {
                 this._previewRenderer = new PreviewRenderer(canvas);
                 await this._previewRenderer.loadTextures();
             }
         }
-        // Update preview with current profile data
         let profileData = this.profiles[this.selectedProfile] ?? null;
-        this._previewRenderer?.render(profileData, this.selectedProfile);
+        this._previewRenderer.render(profileData, this.selectedProfile);
     }
     async close(options) {
         if (this._previewRenderer) {
