@@ -40,4 +40,10 @@
             </fieldset>
         {{/if}}
     {{/each}}
+    {{#if form.fields.length}}
+        <fieldset class="form-set paroi-preview" data-name="preview">
+            <legend><label>{{localize "PUTARINGONIT.Profiles.App.Preview.Label"}}</label></legend>
+            <canvas id="paroi-preview-canvas" width="200" height="200"></canvas>
+        </fieldset>
+    {{/if}}
 </div>

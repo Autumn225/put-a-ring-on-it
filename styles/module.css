@@ -4,7 +4,7 @@
 div.paroi-header {
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 0.625em;
     align-items: center;
 }
 div.paroi-header .form-set {
@@ -46,4 +46,48 @@ div.paroi-form .form-group .form-field {
 }
 div.paroi-form .form-set {
     margin-bottom: 0.625em;
+}
+
+/* Profiles Menu — 2-column grid layout */
+#put-a-ring-on-it-profiles-menu .paroi-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "info     preview"
+        "override ."
+        "ring     borders"
+        "shadows  glows";
+    gap: 0.625em;
+    overflow-x: hidden;
+}
+#put-a-ring-on-it-profiles-menu .paroi-form > fieldset {
+    min-width: 0;
+}
+#put-a-ring-on-it-profiles-menu .paroi-form > p {
+    grid-column: 1 / -1;
+}
+#put-a-ring-on-it-profiles-menu [data-name="info"] {
+    grid-area: info;
+}
+#put-a-ring-on-it-profiles-menu [data-name="override"] {
+    grid-area: override;
+}
+#put-a-ring-on-it-profiles-menu [data-name="ring"] {
+    grid-area: ring;
+}
+#put-a-ring-on-it-profiles-menu [data-name="borders"] {
+    grid-area: borders;
+}
+#put-a-ring-on-it-profiles-menu [data-name="shadows"] {
+    grid-area: shadows;
+}
+#put-a-ring-on-it-profiles-menu [data-name="glows"] {
+    grid-area: glows;
+}
+#put-a-ring-on-it-profiles-menu [data-name="preview"] {
+    grid-area: preview;
+}
+#put-a-ring-on-it-profiles-menu [data-name="preview"] canvas {
+    display: block;
+    margin: 0 auto;
 }

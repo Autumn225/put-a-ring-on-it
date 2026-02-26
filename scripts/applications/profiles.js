@@ -1,6 +1,7 @@
 import {TemplateApplication} from './defaultMenu.js';
 import {Constants, TokenRingProfile} from '../constants.js';
 import {PutARingOnIt} from '../put-a-ring-on-it.js';
+import {PreviewRenderer} from './preview-renderer.js';
 import {settings} from '../settings.js';
 export class ProfilesMenu extends TemplateApplication {
     constructor() {
@@ -27,7 +28,7 @@ export class ProfilesMenu extends TemplateApplication {
             contentClasses: ['standard-form']
         },
         position: {
-            width: 500,
+            width: 800,
             height: 'auto'
         }
     };
@@ -143,11 +144,31 @@ export class ProfilesMenu extends TemplateApplication {
         };
         return context;
     }
-    _onRender(context, options) {
-        //this.element.querySelectorAll...
+    async _onRender(context, options) {
+        let fieldset = this.element.querySelector('[data-name="preview"]');
+        if (!fieldset) {
+            this._previewRenderer?.destroy();
+            this._previewRenderer = null;
+            return;
+        }
+        if (this._previewRenderer) {
+            // Replace the template's fresh canvas with the existing PIXI-bound one
+            fieldset.querySelector('canvas')?.replaceWith(this._previewRenderer.canvas);
+        } else {
+            let canvas = fieldset.querySelector('#paroi-preview-canvas');
+            if (canvas) {
+                this._previewRenderer = new PreviewRenderer(canvas);
+                await this._previewRenderer.loadTextures();
+            }
+        }
+        let profileData = this.profiles[this.selectedProfile] ?? null;
+        this._previewRenderer.render(profileData, this.selectedProfile);
     }
     async close(options) {
-        // Do things when closed...
+        if (this._previewRenderer) {
+            this._previewRenderer.destroy();
+            this._previewRenderer = null;
+        }
         super.close(options);
         return true;
     }
