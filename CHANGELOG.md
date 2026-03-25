@@ -1,3 +1,8 @@
+# 0.1.0 Release:
+- New token ring preview in profiles menu (Thanks Tyler)
+- Added background option for profiles
+- Fix bug when cached textures would un-load
+  
 # 0.0.6 Release:
 - Fix up custom settings
 

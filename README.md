@@ -47,3 +47,7 @@ Settings allow you to customize and create profiles, set the blacklist to preven
 If you enjoy the module and are in the position to, please consider supporting me on Ko-fi.
   
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/U7U0EZHM7)
+
+## **SPECIAL THANKS TO**
+  
+[Tyler](https://github.com/Sayshal)
