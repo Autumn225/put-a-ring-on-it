@@ -49,48 +49,51 @@
                     "Borders": {
                         "InnerBorder": {
                             "Color": {
-                                "Label": "Inner Border Color:"
+                                "Label": "➜ Color:"
                             },
                             "Enabled": {
                                 "Label": "Inner Border Enabled:"
                             },
                             "Size": {
-                                "Label": "Inner Border Size:"
+                                "Label": "➜ Size:"
                             }
                         },
                         "Label": "Borders",
                         "OuterBorder": {
                             "Color": {
-                                "Label": "Outer Border Color:"
+                                "Label": "➜ Color:"
                             },
                             "Enabled": {
                                 "Label": "Outer Border Enabled:"
                             },
                             "Size": {
-                                "Label": "Outer Border Size:"
+                                "Label": "➜ Size:"
                             }
                         }
                     },
+                    "Color": {
+                        "Label": "➜ Color:"
+                    },
+                    "Coverage": {
+                        "Label": "➜ Coverage:"
+                    },
                     "Glows": {
                         "InnerGlow": {
-                            "Color": {
-                                "Label": "Inner Glow Color:"
-                            },
                             "Enabled": {
                                 "Label": "Inner Glow Enabled:"
                             }
                         },
                         "Label": "Glows",
                         "OuterGlow": {
-                            "Color": {
-                                "Label": "Outer Glow Color:"
-                            },
                             "Enabled": {
                                 "Label": "Outer Glow Enabled:"
                             }
                         }
                     },
                     "Info": {
+                        "BackgroundEnabled": {
+                            "Label": "Background Enabled:"
+                        },
                         "Label": "Info",
                         "OverrideEnabled": {
                             "Hint": "When enabled, a chosen texture will be applied to tokens instead of a custon ring.",
@@ -112,7 +115,6 @@
                     },
                     "Ring": {
                         "BevelStyle": {
-                            "Hint": "Bevel style, for added depth.",
                             "Label": "Bevel Style:"
                         },
                         "ColorOverlay": {
@@ -134,32 +136,29 @@
                     },
                     "Shadows": {
                         "InnerShadow": {
-                            "Coverage": {
-                                "Label": "Inner Shadow Coverage:"
-                            },
                             "Enabled": {
                                 "Label": "Inner Shadow Enabled:"
                             }
                         },
                         "Label": "Shadows",
                         "OuterShadow": {
-                            "Coverage": {
-                                "Label": "Outer Shadow Coverage:"
-                            },
                             "Enabled": {
                                 "Label": "Outer Shadow Enabled:"
                             }
                         }
+                    },
+                    "Size": {
+                        "Label": "➜ Size:"
                     }
                 },
                 "Form": {
                     "Placeholder": "Select or add a profile!"
                 },
-                "Preview": {
-                    "Label": "Preview"
-                },
                 "Header": {
                     "Content": "Select profile to edit."
+                },
+                "Preview": {
+                    "Label": "Preview"
                 },
                 "WindowTitle": "Put A Ring On It - Profiles Menu"
             },

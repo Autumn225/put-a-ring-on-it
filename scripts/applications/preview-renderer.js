@@ -6,8 +6,8 @@ export class PreviewRenderer {
         this.canvas = canvas;
         this.app = new PIXI.Application({
             view: canvas,
-            width: 200,
-            height: 200,
+            width: 300,
+            height: 300,
             backgroundAlpha: 0,
             antialias: true
         });
@@ -85,9 +85,10 @@ export class PreviewRenderer {
             this._lastProfileKey = profileKey;
             await this._randomizePortrait(profileKey);
         }
-        let size = 200;
-        let cx = size / 2;
-        let cy = size / 2;
+        let size = 285;
+        let canvasSize = 300;
+        let cx = canvasSize / 2;
+        let cy = canvasSize / 2;
 
         // Load profile-specific texture
         let texturePath = profile.overrideEnabled ? profile.overrideTexture : profile.ring.texture;
@@ -97,6 +98,15 @@ export class PreviewRenderer {
         const outerScale = 1075 / 1024;
         const outerRadius = size / 2;
         const innerRadius = outerRadius * holeRatio;
+
+        // Background
+        if (profile.backgroundEnabled) {
+            let background = new PIXI.Graphics();
+            background.beginFill(profile.backgroundColor);
+            background.drawCircle(cx, cy, innerRadius);
+            background.endFill();
+            stage.addChild(background);
+        }
 
         // Portrait (mystery-man masked to inner circle)
         if (this._portraitTexture) {

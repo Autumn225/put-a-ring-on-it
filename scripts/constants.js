@@ -71,6 +71,8 @@ export class TokenRingProfile {
         this.identifier = data?.identifier ?? data.name?.toLowerCase().replace(/\s+/g, '-') ?? 'default-profile';
         this.overrideEnabled = data?.overrideEnabled ?? false;
         this.overrideTexture = data?.overrideTexture;
+        this.backgroundEnabled = data?.backgroundEnabled ?? false;
+        this.backgroundColor = data?.backgroundColor ?? '#ffffff';
         this._ring = data?.ring;
         this.texture = data?.texture;
         this.ringSize = data?.ringSize;
@@ -215,6 +217,20 @@ export class TokenRingProfile {
                         label: 'PUTARINGONIT.Profiles.App.Field.Info.OverrideEnabled.Label',
                         hint: 'PUTARINGONIT.Profiles.App.Field.Info.OverrideEnabled.Hint',
                         value: this.overrideEnabled
+                    },
+                    {
+                        type: 'checkbox',
+                        name: 'backgroundEnabled',
+                        id: 'background-enabled',
+                        label: 'PUTARINGONIT.Profiles.App.Field.Info.BackgroundEnabled.Label',
+                        value: this.backgroundEnabled
+                    },
+                    {
+                        type: 'color',
+                        name: 'backgroundColor',
+                        id: 'background-color',
+                        label: 'PUTARINGONIT.Profiles.App.Field.Color.Label',
+                        value: this.backgroundColor
                     }
                 ]
             },
@@ -261,7 +277,6 @@ export class TokenRingProfile {
                         name: 'bevelStyle',
                         id: 'bevel-style',
                         label: 'PUTARINGONIT.Profiles.App.Field.Ring.BevelStyle.Label',
-                        hint: 'PUTARINGONIT.Profiles.App.Field.Ring.BevelStyle.Hint',
                         value: this.ring.bevelStyle,
                         options: [
                             {label: 'PUTARINGONIT.Defaults.None', value: 'none'},
@@ -302,7 +317,7 @@ export class TokenRingProfile {
                         type: 'select',
                         name: 'innerBorderSize',
                         id: 'inner-border-size',
-                        label: 'PUTARINGONIT.Profiles.App.Field.Borders.InnerBorder.Size.Label',
+                        label: 'PUTARINGONIT.Profiles.App.Field.Size.Label',
                         value: this.innerBorder.size,
                         options: this._sizesOptions
                     },
@@ -310,7 +325,7 @@ export class TokenRingProfile {
                         type: 'color',
                         name: 'innerBorderColor',
                         id: 'inner-border-color',
-                        label: 'PUTARINGONIT.Profiles.App.Field.Borders.InnerBorder.Color.Label',
+                        label: 'PUTARINGONIT.Profiles.App.Field.Color.Label',
                         value: this.innerBorder.color
                     },
                     {
@@ -324,7 +339,7 @@ export class TokenRingProfile {
                         type: 'select',
                         name: 'outerBorderSize',
                         id: 'outer-border-size',
-                        label: 'PUTARINGONIT.Profiles.App.Field.Borders.OuterBorder.Size.Label',
+                        label: 'PUTARINGONIT.Profiles.App.Field.Size.Label',
                         value: this.outerBorder.size,
                         options: this._sizesOptions
                     },
@@ -332,7 +347,7 @@ export class TokenRingProfile {
                         type: 'color',
                         name: 'outerBorderColor',
                         id: 'outer-border-color',
-                        label: 'PUTARINGONIT.Profiles.App.Field.Borders.OuterBorder.Color.Label',
+                        label: 'PUTARINGONIT.Profiles.App.Field.Color.Label',
                         value: this.outerBorder.color
                     }
                 ]
@@ -353,7 +368,7 @@ export class TokenRingProfile {
                         type: 'select',
                         name: 'innerShadowCoverage',
                         id: 'inner-shadow-coverage',
-                        label: 'PUTARINGONIT.Profiles.App.Field.Shadows.InnerShadow.Coverage.Label',
+                        label: 'PUTARINGONIT.Profiles.App.Field.Coverage.Label',
                         value: this.innerShadow.coverage,
                         options: this._coverageOptions
                     },
@@ -368,7 +383,7 @@ export class TokenRingProfile {
                         type: 'select',
                         name: 'outerShadowCoverage',
                         id: 'outer-shadow-coverage',
-                        label: 'PUTARINGONIT.Profiles.App.Field.Shadows.OuterShadow.Coverage.Label',
+                        label: 'PUTARINGONIT.Profiles.App.Field.Coverage.Label',
                         value: this.outerShadow.coverage,
                         options: this._coverageOptions
                     }
@@ -390,7 +405,7 @@ export class TokenRingProfile {
                         type: 'color',
                         name: 'innerGlowColor',
                         id: 'inner-glow-color',
-                        label: 'PUTARINGONIT.Profiles.App.Field.Glows.InnerGlow.Color.Label',
+                        label: 'PUTARINGONIT.Profiles.App.Field.Color.Label',
                         value: this.innerGlow.color
                     },
                     {
@@ -404,7 +419,7 @@ export class TokenRingProfile {
                         type: 'color',
                         name: 'outerGlowColor',
                         id: 'outer-glow-color',
-                        label: 'PUTARINGONIT.Profiles.App.Field.Glows.OuterGlow.Color.Label',
+                        label: 'PUTARINGONIT.Profiles.App.Field.Color.Label',
                         value: this.outerGlow.color
                     }
                 ]

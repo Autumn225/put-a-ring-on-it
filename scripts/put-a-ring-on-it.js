@@ -3,6 +3,7 @@ import {Constants, TokenRingProfile} from './constants.js';
 let cachedTextures = null;
 let profiles = null;
 let settings = null;
+let cachedTime = null;
 
 // Setup Hook
 async function wrap() {
@@ -11,6 +12,12 @@ async function wrap() {
     if (!cachedTextures) await cacheTextures();
     libWrapper.register(Constants.MODULE_NAME, 'foundry.canvas.placeables.Token.prototype._draw', wrapper, 'WRAPPER');
     async function wrapper(wrapped, ...args) {
+        // Test random cached texture to see if it's still loaded
+        if ((game.time.serverTime - (cachedTime ?? 0)) >= 30000) {
+            let keys = Object.keys(cachedTextures);
+            if (!cachedTextures[keys[keys.length * Math.random() << 0]]?.baseTexture?.resource) await cacheTextures();
+            else cachedTime = game.time.serverTime;
+        }
         await wrapped(...args);
         applyRing(this);
         return this;
@@ -21,6 +28,7 @@ async function cacheTextures() {
     let constantAssets = await Promise.all(Object.entries(Constants.assetPaths).map(async ([key, path]) => [key, await foundry.canvas.loadTexture(path)]));
     let settingAssets = await Promise.all(Object.entries(profiles).map(async ([key, value]) => [key, await foundry.canvas.loadTexture(value.overrideEnabled ? value.overrideTexture : value.texture)]));
     cachedTextures = Object.fromEntries(constantAssets.concat(settingAssets));
+    cachedTime = game.time.serverTime;
     // may want to change this to just cache the paths by each profile
 }
 
@@ -116,6 +124,21 @@ function applyRing(token) {
     token.addChild(mask);
     if (token.mesh) token.mesh.mask = mask;
 
+    // Back containter (outer shadows and glows)
+    // Shadows and glows are scaled up so they can extend outside the token
+    let backContainer = new PIXI.Container();
+    backContainer.name = backContainerName;
+    backContainer.position.set(cx, cy); // Needs to be centered because it's scaled up
+
+    // Background
+    if (profile.backgroundEnabled) {
+        let background = new PIXI.Graphics();
+        background.beginFill(profile.backgroundColor);
+        background.drawCircle(0, 0, innerRadius);
+        background.endFill();
+        backContainer.addChild(background);
+    }
+
     // If override is enabled (a premade token ring) just apply that
     if (profile.overrideEnabled) {
         let overrideRing = new PIXI.Container();
@@ -126,15 +149,11 @@ function applyRing(token) {
         o.width = w; 
         o.height = h;
         overrideRing.addChild(o);
+        token.addChildAt(backContainer, 0); // Incase we have a background
         addTokenRing(token, overrideRing);
         return;
     }
 
-    // Back containter (outer shadows and glows)
-    // Shadows and glows are scaled up so they can extend outside the token
-    let backContainer = new PIXI.Container();
-    backContainer.name = backContainerName;
-    backContainer.position.set(cx, cy); // Needs to be centered because it's scaled up
     if (profile.outerGlowEnabled) {
         let src = cachedTextures[profile.outerGlow.fileKey];
         let og = new PIXI.Sprite(src);
