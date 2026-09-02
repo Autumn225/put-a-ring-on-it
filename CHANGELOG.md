@@ -1,3 +1,6 @@
+# 0.1.1 Release:
+- Verified for v14
+
 # 0.1.0 Release:
 - New token ring preview in profiles menu (Thanks Tyler)
 - Added background option for profiles
